@@ -2,9 +2,9 @@ package com.ahmadsuyadi.adsmanager.module
 
 import android.app.Activity
 import android.widget.RelativeLayout
-import com.google.android.ads.nativetemplates.TemplateView
 import com.ahmadsuyadi.adsmanager.module.ads.ConfigAds
 import com.ahmadsuyadi.adsmanager.module.ads.admob.AdmobAds
+import com.google.android.ads.nativetemplates.TemplateView
 
 class AdsManager(private val admobAds: AdmobAds) {
     fun initialize(activity: Activity) {
@@ -19,8 +19,8 @@ class AdsManager(private val admobAds: AdmobAds) {
 
     fun showInterstitial() {
         with(ConfigAds) {
-            if (isShowAds && currentCountInt % intervalInt == 0)
-            admobAds.showInterstitial()
+            if (isShowAds && currentCountInt % intervalInt == 0 && currentCountInt!= 0)
+                admobAds.showInterstitial()
             currentCountInt++
         }
 
