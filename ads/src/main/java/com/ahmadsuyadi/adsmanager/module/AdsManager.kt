@@ -19,12 +19,13 @@ class AdsManager(private val admobAds: AdmobAds) {
 
     fun showInterstitial() {
         with(ConfigAds) {
-            if (isShowAds && currentCountInt % intervalInt == 0 && currentCountInt!= 0)
+            if (isShowAds && currentCountInt % intervalInt == 0 && currentCountInt != 0)
                 admobAds.showInterstitial()
             currentCountInt++
         }
 
     }
+
     fun showNativeAds(nativeView: TemplateView) {
         admobAds.showNativeAds(nativeView)
     }

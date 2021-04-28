@@ -4,19 +4,25 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.util.DisplayMetrics
+import android.util.Log
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
+import com.ahmadsuyadi.adsmanager.module.ads.ConfigAds
+import com.ahmadsuyadi.adsmanager.module.ads.IAds
 import com.google.android.ads.nativetemplates.NativeTemplateStyle
 import com.google.android.ads.nativetemplates.TemplateView
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.formats.NativeAdOptions
-import com.ahmadsuyadi.adsmanager.module.ads.ConfigAds
-import com.ahmadsuyadi.adsmanager.module.ads.IAds
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 
 
-class AdmobAds: IAds {
+class AdmobAds : IAds {
 
-    private lateinit var mInterstitialAd: InterstitialAd
+    private val TAG = AdmobAds::class.java.simpleName
+
+    private var mInterstitialAd: InterstitialAd? = null
+
     private lateinit var activity: Activity
     private lateinit var context: Context
     private lateinit var adRequest: AdRequest
@@ -25,19 +31,26 @@ class AdmobAds: IAds {
         this.activity = activity
         context = activity
         MobileAds.initialize(context) {
-
+            Log.i(TAG, "initializationOnStatus: $it")
+            MobileAds.setRequestConfiguration(
+                    RequestConfiguration.Builder()
+                            .setTestDeviceIds(ConfigAds.testDevices)
+                            .build()
+            )
+            loadInt()
         }
-        MobileAds.setRequestConfiguration(
-            RequestConfiguration.Builder()
-                .setTestDeviceIds(ConfigAds.testDevices)
-                .build()
-        )
+    }
 
-        adRequest = AdRequest.Builder().build()
-        mInterstitialAd = InterstitialAd(context)
-        mInterstitialAd.adListener = interstitialAdListener
-        mInterstitialAd.adUnitId = ConfigAds.admobInterId
-        mInterstitialAd.loadAd(adRequest)
+    private fun loadInt() {
+        InterstitialAd.load(context, ConfigAds.admobInterId, adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                mInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                mInterstitialAd = interstitialAd
+            }
+        })
     }
 
     override fun showBanner(bannerView: RelativeLayout) {
@@ -49,12 +62,24 @@ class AdmobAds: IAds {
     }
 
     override fun showInterstitial() {
-        if (mInterstitialAd.isLoaded) {
-            mInterstitialAd.show()
-        } else {
-            mInterstitialAd.loadAd(adRequest)
-        }
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
+                override fun onAdDismissedFullScreenContent() {
+                    mInterstitialAd = null
+                    loadInt()
+                }
 
+                override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+                    mInterstitialAd = null
+                }
+
+                override fun onAdShowedFullScreenContent() {
+
+                }
+            }
+            mInterstitialAd?.show(activity)
+        } else
+            loadInt()
     }
 
     override fun showNativeAds(nativeView: TemplateView) {
@@ -79,27 +104,20 @@ class AdmobAds: IAds {
         adLoader.loadAd(adRequest)
     }
 
-
     private fun adSize(bannerView: RelativeLayout): AdSize {
-            val display = activity.windowManager.defaultDisplay
-            val outMetrics = DisplayMetrics()
-            display.getMetrics(outMetrics)
+        val display = activity.windowManager.defaultDisplay
+        val outMetrics = DisplayMetrics()
+        display.getMetrics(outMetrics)
 
-            val density = outMetrics.density
+        val density = outMetrics.density
 
-            var adWidthPixels = bannerView.width.toFloat()
-            if (adWidthPixels == 0f) {
-                adWidthPixels = outMetrics.widthPixels.toFloat()
-            }
-
-            val adWidth = (adWidthPixels / density).toInt()
-            return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(context, adWidth)
+        var adWidthPixels = bannerView.width.toFloat()
+        if (adWidthPixels == 0f) {
+            adWidthPixels = outMetrics.widthPixels.toFloat()
         }
 
-
-    private val interstitialAdListener = object: AdListener() {
-        override fun onAdClosed() {
-            mInterstitialAd.loadAd(adRequest)
-        }
+        val adWidth = (adWidthPixels / density).toInt()
+        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(context, adWidth)
     }
+
 }
