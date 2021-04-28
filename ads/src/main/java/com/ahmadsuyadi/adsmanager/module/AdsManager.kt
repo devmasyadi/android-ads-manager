@@ -4,7 +4,6 @@ import android.app.Activity
 import android.widget.RelativeLayout
 import com.ahmadsuyadi.adsmanager.module.ads.ConfigAds
 import com.ahmadsuyadi.adsmanager.module.ads.admob.AdmobAds
-import com.google.android.ads.nativetemplates.TemplateView
 
 class AdsManager(private val admobAds: AdmobAds) {
     fun initialize(activity: Activity) {
@@ -23,10 +22,5 @@ class AdsManager(private val admobAds: AdmobAds) {
                 admobAds.showInterstitial()
             currentCountInt++
         }
-
-    }
-
-    fun showNativeAds(nativeView: TemplateView) {
-        admobAds.showNativeAds(nativeView)
     }
 }
