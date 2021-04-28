@@ -32,6 +32,7 @@ class AdmobAds : IAds {
         context = activity
         MobileAds.initialize(context) {
             Log.i(TAG, "initializationOnStatus: $it")
+            adRequest = AdRequest.Builder().build()
             MobileAds.setRequestConfiguration(
                     RequestConfiguration.Builder()
                             .setTestDeviceIds(ConfigAds.testDevices)
