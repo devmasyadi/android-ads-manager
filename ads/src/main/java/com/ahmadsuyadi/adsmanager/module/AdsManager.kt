@@ -18,9 +18,9 @@ class AdsManager(private val admobAds: AdmobAds) {
 
     fun showInterstitial() {
         with(ConfigAds) {
-            if (isShowAds && currentCountInt % intervalInt == 0 && currentCountInt != 0)
-                admobAds.showInterstitial()
             currentCountInt++
+            if (isShowAds && currentCountInt % intervalInt == 0)
+                admobAds.showInterstitial()
         }
     }
 }
