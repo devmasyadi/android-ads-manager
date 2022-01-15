@@ -1,7 +1,6 @@
 package com.ahmadsuyadi.adsmanager.module
 
 import android.app.Activity
-import android.util.Log
 import android.widget.RelativeLayout
 import com.ahmadsuyadi.adsmanager.module.ads.ConfigAds
 import com.ahmadsuyadi.adsmanager.module.ads.admob.AdmobAds
@@ -25,8 +24,8 @@ class AdsManager(
     }
 
     fun showBanner(bannerView: RelativeLayout) {
-        if (ConfigAds.isShowAds && ConfigAds.isShowAds)
-            when(ConfigAds.modeAds) {
+        if (ConfigAds.isShowAds && ConfigAds.isShowBanner)
+            when (ConfigAds.modeAds) {
                 1 -> admobAds.showBanner(bannerView)
                 2 -> unityAds.showBanner(bannerView)
                 3 -> appLovin.showBanner(bannerView)
@@ -36,15 +35,14 @@ class AdsManager(
     fun showInterstitial(useInterval: Boolean? = true) {
         with(ConfigAds) {
             currentCountInt++
-            if (isShowAds && currentCountInt % intervalInt == 0 && useInterval == true)
-                when(modeAds) {
+            if (isShowAds && currentCountInt % intervalInt == 0 && useInterval == true && isShowInter)
+                when (modeAds) {
                     1 -> admobAds.showInterstitial()
                     2 -> unityAds.showInterstitial()
                     3 -> appLovin.showInterstitial()
                 }
-
             else
-                when(modeAds) {
+                when (modeAds) {
                     1 -> admobAds.showInterstitial()
                     2 -> unityAds.showInterstitial()
                     3 -> appLovin.showInterstitial()
@@ -53,8 +51,8 @@ class AdsManager(
     }
 
     fun showNativeAds(nativeView: RelativeLayout, nativeAdmob: TemplateView) {
-        if (ConfigAds.isShowAds)
-            when(ConfigAds.modeAds) {
+        if (ConfigAds.isShowAds && ConfigAds.isShowNative)
+            when (ConfigAds.modeAds) {
                 1 -> admobAds.showNativeAdsAdmob(nativeView, nativeAdmob)
                 2 -> unityAds.showNativeAds(nativeView)
                 3 -> appLovin.showNativeAds(nativeView)
