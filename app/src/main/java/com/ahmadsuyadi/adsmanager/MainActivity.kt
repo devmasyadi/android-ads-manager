@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.RelativeLayout
 import com.ahmadsuyadi.adsmanager.module.AdsManager
 import com.ahmadsuyadi.adsmanager.module.ads.ConfigAds
-import kotlinx.android.synthetic.main.native_ads.*
+import com.google.android.ads.nativetemplates.TemplateView
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
@@ -22,12 +22,13 @@ class MainActivity : AppCompatActivity() {
         val btnShowNative = findViewById<Button>(R.id.btnShowNative)
         val rlBanner = findViewById<RelativeLayout>(R.id.rlBanner)
         val rlNativeAds = findViewById<RelativeLayout>(R.id.rlNativeView)
+        val templateAdmob = findViewById<TemplateView>(R.id.my_template)
 
         ConfigAds.admobBannerId = "ca-app-pub-3940256099942544/6300978111"
         ConfigAds.admobInterId = "ca-app-pub-3940256099942544/1033173712"
         ConfigAds.admobNativeId = "ca-app-pub-3940256099942544/2247696110"
         ConfigAds.unitAdsID = "4501269"
-        ConfigAds.modeAds = 2
+        ConfigAds.modeAds = 3
         ConfigAds.isTestMode = true
         ConfigAds.applovinInterId = "c03749d599e3418c"
         ConfigAds.appLovinBannerId = "8fe21f94479ef6d5"
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnShowNative.setOnClickListener {
-            adsManager.showNativeAds(rlNativeAds, my_template)
+            adsManager.showNativeAds(rlNativeAds, templateAdmob)
         }
     }
 }

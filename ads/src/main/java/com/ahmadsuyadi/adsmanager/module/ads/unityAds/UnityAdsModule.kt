@@ -113,6 +113,7 @@ class UnityAdsModule: IAds, IUnityAdsInitializationListener {
         // Request a banner ad:
         bannerView.load()
         // Associate the banner view object with the banner view:
+        bannerLayout.removeAllViews()
         bannerLayout.addView(bannerView)
     }
 

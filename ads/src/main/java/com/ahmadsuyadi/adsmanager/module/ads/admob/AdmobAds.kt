@@ -60,6 +60,7 @@ class AdmobAds : IAds {
         val adView = AdView(context)
         adView.adUnitId = ConfigAds.admobBannerId
         adView.adSize = adSize(bannerView)
+        bannerView.removeAllViews()
         bannerView.addView(adView)
         adView.loadAd(adRequest)
     }

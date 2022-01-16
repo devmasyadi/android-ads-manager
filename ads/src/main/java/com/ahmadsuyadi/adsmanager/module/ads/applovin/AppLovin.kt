@@ -63,6 +63,7 @@ class AppLovin: IAds {
         val heightPx = 90
 
         adView.layoutParams = FrameLayout.LayoutParams(width, heightPx)
+        bannerView.removeAllViews()
         bannerView.addView(adView)
 
         // Load the ad
