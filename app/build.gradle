@@ -1,12 +1,12 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-//    id 'applovin-quality-service'
+    id 'applovin-quality-service'
 }
 
-//applovin {
-//    apiKey = "KTxRvK2rQa9ltD9o1sIUKIK_JiD87WAB0cUZDT9b2pemHSAW-RbUZE3osLDtGOFtG8FmwXfdnwSpaG1RhntOGB"
-//}
+applovin {
+    apiKey = "KTxRvK2rQa9ltD9o1sIUKIK_JiD87WAB0cUZDT9b2pemHSAW-RbUZE3osLDtGOFtG8FmwXfdnwSpaG1RhntOGB"
+}
 
 android {
     compileSdkVersion 32
