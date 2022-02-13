@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnShowInt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Int"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="238dp" />
+
+    <Button
+        android:id="@+id/btnShowBanner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Banner"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="238dp" />
+
+    <Button
+        android:id="@+id/btnShowNative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Native"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="238dp" />
+
+    <com.ahmadsuyadi.adsmanager.module.ads.tapdaq.NativeAdLayout
+        android:id="@+id/nativeAd"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@android:color/darker_gray"/>
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@+id/viewBanner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+    </RelativeLayout>
+
+
+</LinearLayout>
