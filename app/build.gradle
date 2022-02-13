@@ -19,7 +19,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -46,8 +46,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
-
-    implementation 'com.tapdaq.sdk:Tapdaq-BaseSDK:7.10.0'
 
     //koin
     implementation "io.insert-koin:koin-core:2.2.3"
