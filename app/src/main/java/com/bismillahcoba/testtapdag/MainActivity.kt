@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
 
-        ConfigAds.testDevices.add("B5B8788D8B450E6E58813BAFFF3A3A0B")
+        ConfigAds.testDevices.add("CB4B9DBC445BCD662CF9794A73E65B13")
         ConfigAds.tapdaqApplicationId = "6204a24c86c31c4e07c1183e"
         ConfigAds.tapdaqClientKey = "6ea0953d-2d5b-43e2-a304-d9f61aeec26d"
         ConfigAds.intervalInt = 2
