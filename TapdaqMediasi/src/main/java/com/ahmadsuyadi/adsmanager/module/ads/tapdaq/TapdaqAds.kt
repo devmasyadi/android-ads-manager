@@ -2,6 +2,7 @@ package com.ahmadsuyadi.adsmanager.module.ads.tapdaq
 
 import android.app.Activity
 import android.widget.RelativeLayout
+import com.ahmadsuyadi.adsmanager.module.IInitialize
 import com.ahmadsuyadi.adsmanager.module.ads.ConfigAds
 import com.ahmadsuyadi.adsmanager.module.ads.IAds
 import com.tapdaq.sdk.STATUS
@@ -19,8 +20,10 @@ import com.tapdaq.sdk.listeners.TMInitListener
 class TapdaqAds : IAds {
 
     private lateinit var activity: Activity
+    private lateinit var iInitialize: IInitialize
 
-    override fun initialize(activity: Activity) {
+    override fun initialize(activity: Activity, iInitialize: IInitialize) {
+        this.iInitialize = iInitialize
         this.activity = activity
         val config = Tapdaq.getInstance().config()
         config.registerTestDevices(TMMediationNetworks.AD_MOB, ConfigAds.testDevices)
@@ -39,6 +42,7 @@ class TapdaqAds : IAds {
                 initLister
             )
     }
+
 
     fun showNative(nativeAdLayout: NativeAdLayout) {
         val mAd = HashMap<String, TDMediatedNativeAd>()
@@ -83,11 +87,13 @@ class TapdaqAds : IAds {
             super.didInitialise()
             // Ads may now be requested
             Tapdaq.getInstance().loadVideo(activity, "default", intListener)
+            iInitialize.onInitialize(true)
         }
 
         override fun didFailToInitialise(error: TMAdError?) {
             super.didFailToInitialise(error)
             //Tapdaq failed to initialise
+            iInitialize.onInitialize(false)
         }
     }
 

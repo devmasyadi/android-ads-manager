@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.ahmadsuyadi.adsmanager.module.AdsManager
+import com.ahmadsuyadi.adsmanager.module.IInitialize
 import com.ahmadsuyadi.adsmanager.module.ads.ConfigAds
 import com.bismillahcoba.testtapdag.databinding.ActivityMainBinding
 import org.koin.android.ext.android.inject
@@ -24,7 +25,11 @@ class MainActivity : AppCompatActivity() {
         ConfigAds.tapdaqApplicationId = "6204a24c86c31c4e07c1183e"
         ConfigAds.tapdaqClientKey = "6ea0953d-2d5b-43e2-a304-d9f61aeec26d"
         ConfigAds.intervalInt = 2
-        adsManager.initialize(this)
+        adsManager.initialize(this, object : IInitialize {
+            override fun onInitialize(isSuccess: Boolean) {
+                Log.e("Hallo", "onInitialize: $isSuccess")
+            }
+        })
 
         with(activityMainBinding) {
             btnShowInt.setOnClickListener {
