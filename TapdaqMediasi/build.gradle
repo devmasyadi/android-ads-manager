@@ -48,5 +48,9 @@ dependencies {
     implementation 'com.tapdaq.sdk:TapdaqAdMobAdapter:7.10.0'
     implementation 'com.tapdaq.sdk:TapdaqAppLovinAdapter:7.10.0'
     implementation 'com.tapdaq.sdk:TapdaqFANAdapter:7.10.0'
-    implementation 'com.tapdaq.sdk:TapdaqUnityAdsAdapter:7.10.0'
+
+    //AdmobMediation
+    implementation 'com.google.android.gms:play-services-ads:20.6.0'
+    implementation  'com.google.ads.mediation:facebook:6.8.0.0'
+    api project(':nativetemplates')
 }

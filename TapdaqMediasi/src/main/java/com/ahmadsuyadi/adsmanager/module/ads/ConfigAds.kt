@@ -16,7 +16,7 @@ object ConfigAds {
     var applovinInterId = ""
     var appLovinBannerId = ""
     var isTestMode = true
-    //1 Admob, 2 UnityAds, 3 AppLovin
+    //1 Admob, 2 UnityAds, 3 AppLovin, 4 Tapdaq, 5 Admob Mediation
     var modeAds = 1
     var testDevices = ArrayList<String>()
 }

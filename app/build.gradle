@@ -19,7 +19,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -55,5 +55,4 @@ dependencies {
     implementation "io.insert-koin:koin-core:2.2.3"
     implementation "io.insert-koin:koin-android:2.2.3"
     implementation project(':TapdaqMediasi')
-
 }

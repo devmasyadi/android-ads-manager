@@ -32,11 +32,28 @@
         tools:layout_editor_absoluteX="149dp"
         tools:layout_editor_absoluteY="238dp" />
 
-    <com.ahmadsuyadi.adsmanager.module.ads.tapdaq.NativeAdLayout
-        android:id="@+id/nativeAd"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="@android:color/darker_gray"/>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <!--  This is your template view -->
+        <com.google.android.ads.nativetemplates.TemplateView
+            android:id="@+id/nativeAdmobMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:gnt_template_type="@layout/gnt_medium_template_view" />
+
+        <com.ahmadsuyadi.adsmanager.module.ads.tapdaq.NativeAdLayout
+            android:visibility="gone"
+            android:id="@+id/nativeAd"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@android:color/darker_gray"/>
+
+    </FrameLayout>
+
+
+
 
     <RelativeLayout
         android:gravity="center"
