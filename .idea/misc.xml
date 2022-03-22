@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="TapdaqMediasi/src/main/res/layout/nativead_layout.xml" value="0.1331521739130435" />
+        <entry key="admobMediationApplovinMax/src/main/res/layout/nativead_layout.xml" value="0.1331521739130435" />
+        <entry key="admobMediationApplovinMax/src/main/res/xml/network_security_config.xml" value="0.21979166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/network_security_config.xml" value="0.1331521739130435" />
       </map>

@@ -15,7 +15,7 @@ dependencyResolutionManagement {
         maven { url "https://android-sdk.tapdaq.com" }
     }
 }
-rootProject.name = "testtapdag"
+rootProject.name = "admobMediationApplovinMax"
 include ':app'
-include ':TapdaqMediasi'
+include ':admobMediationApplovinMax'
 include ':nativetemplates'

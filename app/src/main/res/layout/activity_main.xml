@@ -39,15 +39,16 @@
         <!--  This is your template view -->
         <com.google.android.ads.nativetemplates.TemplateView
             android:id="@+id/nativeAdmobMedium"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:gnt_template_type="@layout/gnt_medium_template_view" />
 
-        <com.ahmadsuyadi.adsmanager.module.ads.tapdaq.NativeAdLayout
-            android:visibility="gone"
+        <RelativeLayout
+            android:visibility="visible"
             android:id="@+id/nativeAd"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
             android:background="@android:color/darker_gray"/>
 
     </FrameLayout>
