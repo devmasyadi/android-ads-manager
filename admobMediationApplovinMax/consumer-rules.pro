@@ -20,12 +20,6 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
-#Tapdaq
--keep class com.tapdaq.sdk.** { *; }
--keep class com.tapdaq.adapters.* { *; }
--keep class com.tapdaq.unityplugin.* { *; }
--keep class com.google.android.gms.ads.identifier.** { *; }
-
 #Admob
 -keep public class com.google.android.gms.ads.** {
     public *;
