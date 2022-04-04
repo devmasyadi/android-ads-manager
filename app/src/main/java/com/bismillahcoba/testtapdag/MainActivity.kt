@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ahmadsuyadi.adsmanager.module.AdsManager
 import com.ahmadsuyadi.adsmanager.module.IInitialize
 import com.ahmadsuyadi.adsmanager.module.ads.ConfigAds
-import com.applovin.sdk.AppLovinSdk
 import com.bismillahcoba.testtapdag.databinding.ActivityMainBinding
 import org.koin.android.ext.android.inject
 

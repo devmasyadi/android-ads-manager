@@ -55,5 +55,4 @@ dependencies {
     implementation "io.insert-koin:koin-core:2.2.3"
     implementation "io.insert-koin:koin-android:2.2.3"
     implementation project(':admobMediationApplovinMax')
-    implementation 'com.applovin:applovin-sdk:11.3.2'
 }

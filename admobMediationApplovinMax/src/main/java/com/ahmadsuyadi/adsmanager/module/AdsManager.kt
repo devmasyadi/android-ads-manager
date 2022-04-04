@@ -31,7 +31,7 @@ class AdsManager(
 
     fun showInterstitial() {
         ConfigAds.currentCountInt++
-        if (ConfigAds.isShowAds && ConfigAds.currentCountInt % ConfigAds.intervalInt == 0) {
+        if (ConfigAds.isShowAds && ConfigAds.isShowInter && ConfigAds.currentCountInt % ConfigAds.intervalInt == 0) {
             when (ConfigAds.modeAds) {
                 3 -> applovinAds.showInterstitial()
                 5 -> admobMediationAds.showInterstitial()
